@@ -1,7 +1,36 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Wrapper, Content } from './Form.styles';
 
 const Form = () => {
+  const [formData, setFormData] = useState({
+    email: '',
+    password: '',
+    confirmPassword: '',
+    isJoinList: false,
+  });
+
+  console.log(formData);
+
+  // value 1: email => string
+  // value 2: password => string
+  // value 3: password confirm => string
+  // value 4: isJoinList => boolean
+
+  const handleChange = (event) => {
+    const { name, type, value } = event.target;
+
+    setFormData((prevState) => {
+      return {
+        ...prevState,
+        [name]: type === 'checkbox' ? !prevState.isJoinList : value,
+      };
+    });
+  };
+
+  const handleSubmit = (event) => {
+    event.preventDefault();
+  };
+
   return (
     <Wrapper>
       <Content>
@@ -10,27 +39,35 @@ const Form = () => {
             className='form-input'
             type='email'
             placeholder='Email adress'
-            name=''
+            name='email'
+            onChange={handleChange}
             id=''
           />
           <input
             className='form-input'
             type='password'
             placeholder='Password'
-            name=''
+            name='password'
+            onChange={handleChange}
             id=''
           />
           <input
             className='form-input'
             type='password'
             placeholder='Confirm password'
-            name=''
+            name='confirmPassword'
+            onChange={handleChange}
             id=''
           />
 
           <div className='form-marketing'>
-            <input type='checkbox' name='' id='' />
-            <label htmlFor=''>I want to join the newsletter</label>
+            <input
+              type='checkbox'
+              name='isJoinList'
+              id='isJoinList'
+              onChange={handleChange}
+            />
+            <label htmlFor='isJoinList'>I want to join the newsletter</label>
           </div>
           <button>Sign up</button>
         </form>
