@@ -41,6 +41,7 @@ const Form = () => {
             placeholder='Email adress'
             name='email'
             onChange={handleChange}
+            value={formData.email}
             id=''
           />
           <input
@@ -49,6 +50,7 @@ const Form = () => {
             placeholder='Password'
             name='password'
             onChange={handleChange}
+            value={formData.password}
             id=''
           />
           <input
@@ -57,6 +59,7 @@ const Form = () => {
             placeholder='Confirm password'
             name='confirmPassword'
             onChange={handleChange}
+            value={formData.confirmPassword}
             id=''
           />
 
@@ -66,6 +69,7 @@ const Form = () => {
               name='isJoinList'
               id='isJoinList'
               onChange={handleChange}
+              value={formData.isJoinList}
             />
             <label htmlFor='isJoinList'>I want to join the newsletter</label>
           </div>
