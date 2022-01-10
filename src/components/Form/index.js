@@ -9,8 +9,6 @@ const Form = () => {
     isJoinList: false,
   });
 
-  console.log(formData);
-
   // value 1: email => string
   // value 2: password => string
   // value 3: password confirm => string
@@ -29,12 +27,18 @@ const Form = () => {
 
   const handleSubmit = (event) => {
     event.preventDefault();
+    formData.password === formData.confirmPassword
+      ? console.log('Successfully sign up')
+      : console.log('password to not match');
+
+    formData.isJoinList &&
+      console.log('Thanks for signing up for ou newsletter');
   };
 
   return (
     <Wrapper>
       <Content>
-        <form className='form' action='#'>
+        <form className='form' onSubmit={handleSubmit}>
           <input
             className='form-input'
             type='email'
@@ -73,7 +77,7 @@ const Form = () => {
             />
             <label htmlFor='isJoinList'>I want to join the newsletter</label>
           </div>
-          <button>Sign up</button>
+          <button type='submit'>Sign up</button>
         </form>
       </Content>
     </Wrapper>
