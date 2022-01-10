@@ -1,9 +1,10 @@
 import { GlobalStyle } from './GlobalStyle';
+import Form from './components/Form';
 
 function App() {
   return (
     <div className='App'>
-      <h1>Form Practice</h1>
+      <Form />
       <GlobalStyle />
     </div>
   );
