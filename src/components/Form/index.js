@@ -6,13 +6,13 @@ const Form = () => {
     email: '',
     password: '',
     confirmPassword: '',
-    isJoinList: false,
+    joinedNewsletter: false,
   });
 
   // value 1: email => string
   // value 2: password => string
   // value 3: password confirm => string
-  // value 4: isJoinList => boolean
+  // value 4: joinedNewsletter => boolean
 
   const handleChange = (event) => {
     const { name, type, value } = event.target;
@@ -20,7 +20,7 @@ const Form = () => {
     setFormData((prevState) => {
       return {
         ...prevState,
-        [name]: type === 'checkbox' ? !prevState.isJoinList : value,
+        [name]: type === 'checkbox' ? !prevState.joinedNewsletter : value,
       };
     });
   };
@@ -31,9 +31,13 @@ const Form = () => {
       ? console.log('Successfully sign up')
       : console.log('password to not match');
 
-    formData.isJoinList &&
+    formData.joinedNewsletter &&
       console.log('Thanks for signing up for ou newsletter');
+
+    console.log(formData);
   };
+
+  const { email, password, confirmPassword, joinedNewsletter } = formData;
 
   return (
     <Wrapper>
@@ -45,7 +49,7 @@ const Form = () => {
             placeholder='Email adress'
             name='email'
             onChange={handleChange}
-            value={formData.email}
+            value={email}
             id=''
           />
           <input
@@ -54,7 +58,7 @@ const Form = () => {
             placeholder='Password'
             name='password'
             onChange={handleChange}
-            value={formData.password}
+            value={password}
             id=''
           />
           <input
@@ -63,19 +67,21 @@ const Form = () => {
             placeholder='Confirm password'
             name='confirmPassword'
             onChange={handleChange}
-            value={formData.confirmPassword}
+            value={confirmPassword}
             id=''
           />
 
           <div className='form-marketing'>
             <input
               type='checkbox'
-              name='isJoinList'
-              id='isJoinList'
+              name='joinedNewsletter'
+              id='joinedNewsletter'
               onChange={handleChange}
-              value={formData.isJoinList}
+              value={joinedNewsletter}
             />
-            <label htmlFor='isJoinList'>I want to join the newsletter</label>
+            <label htmlFor='joinedNewsletter'>
+              I want to join the newsletter
+            </label>
           </div>
           <button type='submit'>Sign up</button>
         </form>
