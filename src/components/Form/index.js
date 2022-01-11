@@ -15,12 +15,12 @@ const Form = () => {
   // value 4: joinedNewsletter => boolean
 
   const handleChange = (event) => {
-    const { name, type, value } = event.target;
+    const { name, type, value, checked } = event.target;
 
     setFormData((prevState) => {
       return {
         ...prevState,
-        [name]: type === 'checkbox' ? !prevState.joinedNewsletter : value,
+        [name]: type === 'checkbox' ? checked : value,
       };
     });
   };
@@ -28,12 +28,13 @@ const Form = () => {
   const handleSubmit = (event) => {
     event.preventDefault();
     formData.password === formData.confirmPassword
-      ? console.log('Successfully sign up')
-      : console.log('password to not match');
+      ? alert('Successfully sign up')
+      : alert('password to not match');
 
     formData.joinedNewsletter &&
-      console.log('Thanks for signing up for ou newsletter');
+      alert('Thanks for signing up for ou newsletter');
 
+    alert('open the console to check data');
     console.log(formData);
   };
 
@@ -83,7 +84,7 @@ const Form = () => {
               I want to join the newsletter
             </label>
           </div>
-          <button type='submit'>Sign up</button>
+          <button>Sign up</button>
         </form>
       </Content>
     </Wrapper>

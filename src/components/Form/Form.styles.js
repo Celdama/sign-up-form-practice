@@ -7,6 +7,7 @@ export const Wrapper = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
+  box-shadow: rgb(38, 57, 77) 0px 20px 30px -10px;
 `;
 
 export const Content = styled.div`
@@ -37,6 +38,10 @@ export const Content = styled.div`
       border-radius: 4px;
       color: var(--white);
       margin: 10px 0;
+
+      :hover {
+        cursor: pointer;
+      }
     }
   }
 `;
